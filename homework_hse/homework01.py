@@ -1,4 +1,4 @@
-word = input('Введите слово: ')
+word = input('Введите слово: ') # задание решено без создания списка
 word = word.strip("!?,.").lower()
 for indx, letter in enumerate(word):
     if indx % 2 == 1 and letter != 'к' and letter != 'а':
@@ -13,7 +13,7 @@ for i in range(number):
         break
 print('Конец!')
 
-word = input('Введите слово: ').strip('!?,.')
+word = input('Введите слово: ').strip('!?,.') #задание решено без срезов
 half = len(word)//2
 for indx, letter in enumerate(word):
     if indx < half:
