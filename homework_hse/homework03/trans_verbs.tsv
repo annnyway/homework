@@ -1,61 +1,21 @@
-break
-buy
-drink
-dislike
-eat
-find
-help
-hate
-like
-love
-leave
-lend
-make
-meet
-show
-bite
-see
-sell
-teach
-bother
-write
-avoid
-bless
-build
-comfort
-confuse
-destroy
-discover
-disturb
-embarass
-encourage
-feed
-frighten
-hit
-hurt
-inspire
-irritate
-kill
-kiss
-marry
-massage
-poison
-protect
-punch
-punish
-push
-scare
-shake
-shoot
-surprise
-swallow
-thank
-threaten
-touch
-use
-want
-watch
-wear
-win
-read
+break	buy	drink
+dislike	eat	find
+help	hate	like
+love	leave	lend
+make	meet	show
+bite	see	sell
+teach	bother	write
+avoid	bless	build
+comfort	confuse	destroy
+discover	disturb	embarrass
+encourage	feed	frighten
+hit	hurt	inspire
+irritate	kill	kiss
+marry	massage	poison
+protect	punch	punish
+push	scare	shake
+shoot	surprise	swallow
+thank	threaten	touch
+use	want	watch
+wear	win	read
 include
