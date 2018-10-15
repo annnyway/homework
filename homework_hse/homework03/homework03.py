@@ -68,8 +68,8 @@ def comparative_adjective():
 
 
 def affirmative_sentence():
-    sentence = str(adjective().capitalize() + ' ' + noun() + ' ' + transitive_verb_with_s() +\
-                   ' ' + noun() + ' that ' + intransitive_verb_with_s() + ' ' + adverb() + '.')
+    sentence = adjective().capitalize() + ' ' + noun() + ' ' + transitive_verb_with_s() +\
+                   ' ' + noun() + ' that ' + intransitive_verb_with_s() + ' ' + adverb() + '.'
     return sentence
 
 
