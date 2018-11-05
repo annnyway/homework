@@ -24,9 +24,9 @@ def astronomy():
         text = delete_stress(text)
         text = re.sub('Философи([еиюяйм]{1,3}[^а-я])', r'Астрологи\1', text)
         text = re.sub('([^а-я])философи([еиюяйм]{1,3}[^а-я])', r'\1астрологи\2', text)
-     with open('Астрология.txt', 'w', encoding='UTF-8') as f:
+    with open('Астрология.txt', 'w', encoding='UTF-8') as f:
         f = f.write(text)
-     return 0
+    return 0
 
 
 def malaysia():
