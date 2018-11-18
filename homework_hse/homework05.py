@@ -31,12 +31,13 @@ def lists_of_files_in_dirs():
         lists_of_files.append([i][0][2])
     return lists_of_files  # функция возвращает список списков файлов в директориях
 
+# отсюда начинаются основные функции
 
 def max_depth():
     depth = []
     for dirpath in dir_paths():
         depth.append(dirpath.count(str(os.sep)))
-    return max(depth)  # функция возвращает максимальную глубину папки
+    return '1. Максимальная глубина папки: ' + str(max(depth))
 
 
 def count_cyrillic_names():
@@ -45,7 +46,7 @@ def count_cyrillic_names():
         for _dir in dirs:
             if re.search('^[а-яА-Я]+$', _dir):
                 cyrillic_names.append(str(_dir))
-    return len(cyrillic_names)  # функция возвращает число папок с кириллическими названиями
+    return '2. Число папок с полностью кириллическими названиями: ' + str(len(cyrillic_names))
 
 
 def max_filename_extension():
@@ -58,14 +59,14 @@ def max_filename_extension():
     for i in extensions:
         if extensions.count(i) == max_count(extensions):
             max_extension = i
-    return max_extension # функция возвращает самое частотное расширение файлов
+    return '3. Самое частотное расширение файлов: ' + max_extension
 
 def files_with_diff_names():
     filenames_without_extension = set()
     for fl in file_names():
         fl, file_extension = os.path.splitext(fl)
         filenames_without_extension.add(fl)
-    return len(filenames_without_extension)  # функция возвращает число разных названий файлов, игнорируя расширения
+    return '5. Число разных названий файлов без учета расширений: ' + str(len(filenames_without_extension))
 
 
 def max_fist_letter_of_dirs():
@@ -73,9 +74,11 @@ def max_fist_letter_of_dirs():
     for root, dirs, files in os.walk('.'):
         for directory in dirs:
             first_letters.append(directory[0])
+    max_letter = ''
     for i in first_letters:
         if first_letters.count(i) == max_count(first_letters):
-            return i  # функция возвращает самую частотную первую букву в названии папок
+            max_letter = i
+    return '4. Самая частотная первая буква в названии папок: ' + max_letter
 
 
 def dirs_with_same_extension_of_files():
@@ -86,7 +89,7 @@ def dirs_with_same_extension_of_files():
             _dir[i] = file_extension
         if len(_dir) > len(set(_dir)):
             count_dirs += 1
-    return count_dirs  # функция возвращает число папок, в которых есть несколько файлов с одним и тем же расширением
+    return '6. Число папок с несколькими файлами с одним и тем же расширением: ' + str(count_dirs)
 
 
 def max_dir_with_files():
@@ -100,19 +103,16 @@ def max_dir_with_files():
             max_dir = _dir
 
     if max_dir == '.':
-        return max_dir + ' (папка с этой программой)'
+        return '7. Папка с максимальным числом файлов: ' + max_dir + ' (папка с этой программой)'
     else:
-        return max_dir  # функция возвращает папку, где больше всего файлов, вместе с путем к ней
+        return '7. Папка с максимальным числом файлов: ' + max_dir  # функция возвращает папку, где больше всего файлов, вместе с путем к ней
 
 
 def main():
-    print('1. Максимальная глубина папки: ', max_depth())
-    print('2. Число папок с полностью кириллическими названиями: ', count_cyrillic_names())
-    print('3. Самое частотное расширение файлов: ', max_filename_extension())
-    print('4. Самая частотная первая буква в названии папок: ', max_fist_letter_of_dirs())
-    print('5. Число разных названий файлов без учета расширений: ', files_with_diff_names())
-    print('6. Число папок с несколькими файлами с одним и тем же расширением: ', dirs_with_same_extension_of_files())
-    print('7. Папка с максимальным числом файлов: ', max_dir_with_files())
+    output = [max_depth(), count_cyrillic_names(), max_filename_extension(), max_fist_letter_of_dirs(), files_with_diff_names(), dirs_with_same_extension_of_files(), max_dir_with_files()]
+    output = '\n'.join(output)
+    with open('homework05.txt', 'w') as wf:
+            wf = wf.write(output)
     return 0
 
 
