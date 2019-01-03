@@ -38,6 +38,7 @@ def write_parts():
     return 0
 
 
+'''
 def split_chapters():
     regexp = re.compile(r"\n\n\n\n\n([IVX]{1,4}.*?)\n\n\n\n\n", re.DOTALL)
     numbers_of_chapters = []
@@ -48,14 +49,13 @@ def split_chapters():
                 numbers_of_chapters += regexp.findall(f)
     print(numbers_of_chapters)
     return 0
-
+'''
 
 def main():
     text()
     part_names(text)
     create_part_files(part_names, text)
     write_parts()
-    split_chapters()
 
 if __name__ == '__main__':
     main()
