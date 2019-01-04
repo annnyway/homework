@@ -1,38 +1,22 @@
 import urllib.request
-import html
-import re
+from bs4 import BeautifulSoup
+
 
 doc = urllib.request.urlopen('https://newtimes.ru/articles/detail/139693/')
-content = doc.read().decode('cp1251')
+page = doc.read().decode('cp1251')
 
-title = ''
-get_title = re.search('<title>(.*?)</title>', content)
-if get_title:
-    title = get_title.group(1)
+soup = BeautifulSoup(page, features="lxml")
 
-lead = ''
-get_lead = re.search(r'"txtlead">(.*?)</div>', content)
-if get_lead:
-    lead = get_lead.group(1)
+date_and_author = soup.find_all("h4")[1].text.strip()
+title = soup.find("title").text
+lead = soup.find("div",{"class":"txtlead"}).text
 
-regexp = re.compile(r'<p>(.*?)</p>', re.DOTALL)
-paragraphs = regexp.findall(content)
-if paragraphs:
-    paragraphs = ''.join(paragraphs)
+content = soup.find_all("p")
+body = ''
+for i in content:
+    i = i.text
+    body += str(i)
 
-regexp = re.compile(r'<img.*?<br>', re.DOTALL)
-clean_paragraphs = regexp.sub('', paragraphs)
+article = date_and_author + '\n' + title + '\n' + lead + '\n' + body
 
-regexp = re.compile(r'.*?</div>', re.DOTALL)
-clean_paragraphs = regexp.sub('', clean_paragraphs)
-
-text = title + '\n' + lead + clean_paragraphs
-
-text = html.unescape(text)
-
-print(text)
-
-#print(paragraphs)
-#s = html.unescape(content)
-#print(content)
-
+print(article)
